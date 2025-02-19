@@ -6,6 +6,6 @@ Overall Requirements:
 - Customise a user profile
 
 Planning:
-- create ER diagram for database, as well as schema.sql and data.sql
+- create ER diagram for database, as well as schema.sql and data.sql X
 - Break into routes, services, and data folders
 - Create jwt authentication middleware
