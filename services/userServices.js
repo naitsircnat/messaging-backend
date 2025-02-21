@@ -36,7 +36,12 @@ async function logInUser(userInfo) {
   return user;
 }
 
+async function sendMessage(messageInfo) {
+  const { sender, receiver, message } = messageInfo;
+}
+
 module.exports = {
   createUser,
   logInUser,
+  sendMessage,
 };

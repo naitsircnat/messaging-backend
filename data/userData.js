@@ -27,11 +27,28 @@ async function getUserByEmail(email) {
     return rows[0];
   } catch (error) {
     console.log(error);
-    throw error;
+    throw error();
+  }
+}
+
+async function sendMessage(message, sender, receiver) {
+  if (!message) {
+    throw new Error("Message missing");
+  }
+
+  try {
+    await pool.query(
+      "INSERT INTO messages (message, sender, receiver) VALUES (?,?,?)",
+      [message, sender, receiver]
+    );
+  } catch (error) {
+    console.log(error);
+    throw error();
   }
 }
 
 module.exports = {
   createUser,
   getUserByEmail,
+  sendMessage,
 };

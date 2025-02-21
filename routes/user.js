@@ -2,6 +2,7 @@ const userServices = require("../services/userServices");
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const authenticateWithJwt = require("../middleware/AuthenticateWithJwt");
 
 router.post("/register", async (req, res) => {
   try {
@@ -29,3 +30,15 @@ router.post("/login", async (req, res) => {
   }
 }),
   (module.exports = router);
+
+router.post("/message", authenticateWithJwt, async (req, res) => {
+  /*
+    - get message, sender and receiver details from req.body
+    - 
+  */
+
+  try {
+  } catch (error) {
+    res.status(500).json({ Message: error.message });
+  }
+});
