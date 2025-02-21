@@ -36,8 +36,8 @@ async function logInUser(userInfo) {
   return user;
 }
 
-async function sendMessage(messageInfo) {
-  const { sender, receiver, message } = messageInfo;
+async function sendMessage(message, sender, receiver) {
+  await userData.sendMessage(message, sender, receiver);
 }
 
 module.exports = {

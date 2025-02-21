@@ -9,7 +9,7 @@ router.post("/register", async (req, res) => {
     await userServices.createUser(req.body);
 
     res.status(201).json({
-      message: "Registration successful",
+      message: "registration successful",
     });
   } catch (error) {
     res.status(400).json({ Message: error.message });
@@ -20,25 +20,30 @@ router.post("/login", async (req, res) => {
   try {
     const user = await userServices.logInUser(req.body);
 
-    const token = await jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
       expiresIn: "2h",
     });
 
-    res.status(201).json({ Message: "Login successful", token: token });
+    res
+      .status(201)
+      .json({ Message: "login successful", token: token, userId: user.id });
   } catch (error) {
     res.status(401).json({ Message: error.message });
   }
-}),
-  (module.exports = router);
+});
 
 router.post("/message", authenticateWithJwt, async (req, res) => {
-  /*
-    - get message, sender and receiver details from req.body
-    - 
-  */
+  const sender = req.userId;
+
+  const { message, receiver } = req.body;
 
   try {
+    await userServices.sendMessage(message, sender, receiver);
+
+    res.status(200).json({ Message: "message sent successfully" });
   } catch (error) {
     res.status(500).json({ Message: error.message });
   }
 });
+
+module.exports = router;

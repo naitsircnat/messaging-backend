@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 async function authenticateWithJwt(req, res, next) {
-  const authHeader = req.header.authorization;
+  const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     res
@@ -16,8 +16,8 @@ async function authenticateWithJwt(req, res, next) {
     req.userId = decoded.userId;
     next();
   } catch (error) {
-    res.status(403).json({ Message: "Invalid or expired token" });
+    res.status(403).json({ Message: "invalid or expired token" });
   }
 }
 
-module.exports = { authenticateWithJwt };
+module.exports = authenticateWithJwt;

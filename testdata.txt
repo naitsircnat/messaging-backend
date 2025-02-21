@@ -3,3 +3,15 @@
   "email": "123@mail.com",
   "password": "12345678"
 }
+
+{
+  "email": "123@mail.com",
+  "password": "12345678"
+}
+
+{
+  "message": "testing testing",
+  "receiver": 1
+}
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MDExNjQ1OCwiZXhwIjoxNzQwMTIzNjU4fQ.tTIJhWVhrRiRc0Yhq0N_HG0f_JH0Zl2fqT7KZR5kPZE
