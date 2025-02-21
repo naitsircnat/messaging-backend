@@ -1,7 +1,8 @@
 const userData = require("../data/userData");
 const bcrypt = require("bcrypt");
 
-async function createUser(name, email, password) {
+async function createUser(userInfo) {
+  const { name, email, password } = userInfo;
   if (password.length < 8) {
     throw new Error("Password must be at least 8 characters long");
   }
