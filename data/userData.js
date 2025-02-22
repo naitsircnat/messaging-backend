@@ -27,7 +27,7 @@ async function getUserByEmail(email) {
     return rows[0];
   } catch (error) {
     console.log(error);
-    throw error();
+    throw error;
   }
 }
 
@@ -43,7 +43,18 @@ async function sendMessage(message, sender, receiver) {
     );
   } catch (error) {
     console.log(error);
-    throw error();
+    throw error;
+  }
+}
+
+async function getUsers() {
+  try {
+    const [rows] = await pool.query("SELECT * FROM users");
+
+    return rows;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }
 
@@ -51,4 +62,5 @@ module.exports = {
   createUser,
   getUserByEmail,
   sendMessage,
+  getUsers,
 };

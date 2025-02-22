@@ -46,4 +46,15 @@ router.post("/message", authenticateWithJwt, async (req, res) => {
   }
 });
 
+router.get("/users", async (req, res) => {
+  const users = await userServices.getUsers();
+
+  res.json(users);
+
+  try {
+  } catch (error) {
+    res.status(500).json({ Message: "Error retrieving users" });
+  }
+});
+
 module.exports = router;

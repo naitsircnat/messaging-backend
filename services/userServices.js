@@ -40,8 +40,13 @@ async function sendMessage(message, sender, receiver) {
   await userData.sendMessage(message, sender, receiver);
 }
 
+async function getUsers() {
+  return await userData.getUsers();
+}
+
 module.exports = {
   createUser,
   logInUser,
   sendMessage,
+  getUsers,
 };
